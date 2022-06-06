@@ -38,7 +38,7 @@ export const Characters = props => {
             ))}
             <div>
                 <button disabled={page === 1} onClick={() => setPage(prevPage => prevPage - 1)}>Previous</button>
-                <button disabled={page}>Next</button>
+                <button disabled={data.info.next === null} onClick={() => setPage(prevPage => prevPage + 1)}>Next</button>
             </div>
         </div>
     )
