@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query';
-import { Character } from './components/Character';
 
 export const Characters = props => {
     const fetchCharacters = async () => {
@@ -28,10 +27,12 @@ export const Characters = props => {
     }
 
 return (
-    <div className="characters">
-        {data.results.map(character => (
-            <Character character={character} />
-        ))}
+    <div>
+        {data.results.map(character => {
+            return (
+                <div>{character.name}</div>
+            )
+        })}
     </div>
 )
 }
