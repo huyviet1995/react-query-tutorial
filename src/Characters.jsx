@@ -13,9 +13,9 @@ export const Characters = props => {
             })
     }
 
-    const { data, status } = useQuery(["characters", page], fetchCharacters, { keepPreviousData: true });
+    const { data, isPreviousData, isLoading, isError } = useQuery(["characters", page], fetchCharacters, { keepPreviousData: true });
 
-    if (status === 'loading') {
+    if (isLoading) {
         return (
             <div>
                 Loading ...
@@ -23,7 +23,7 @@ export const Characters = props => {
         )
     }
 
-    if (status === 'error') {
+    if (isError) {
         return (
             <div>
                 Error ...
@@ -38,7 +38,7 @@ export const Characters = props => {
             ))}
             <div>
                 <button disabled={page === 1} onClick={() => setPage(prevPage => prevPage - 1)}>Previous</button>
-                <button disabled={data.info.next === null} onClick={() => setPage(prevPage => prevPage + 1)}>Next</button>
+                <button disabled={isPreviousData && data.info.next === null} onClick={() => setPage(prevPage => prevPage + 1)}>Next</button>
             </div>
         </div>
     )
