@@ -36,6 +36,10 @@ export const Characters = props => {
             {data.results.map((character, index) => (
                 <Character key={index} character={character} />
             ))}
+            <div>
+                <button disabled={page === 1} onClick={() => setPage(prevPage => prevPage - 1)}>Previous</button>
+                <button disabled={page}>Next</button>
+            </div>
         </div>
     )
 }
